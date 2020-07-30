@@ -53,7 +53,7 @@ class ChickenBwk(commands.Bot):
         current_hour = datetime.now().hour
 
         if current_hour != self.last_hour:
-            self.last_hour == current_hour
+            self.last_hour = current_hour
             await self.send_pic(channel)
 
     async def on_ready(self):
