@@ -8,8 +8,6 @@ from discord.ext import commands
 
 
 class ChickenBwk(commands.Bot):
-    IMG_URL = "http://chickens.marc.cx/snapshot"
-
     def __init__(self, *args, **kwargs):
         self.description = "chik'n pix"
 
