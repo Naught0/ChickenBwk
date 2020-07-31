@@ -38,8 +38,6 @@ class Pix(commands.Cog):
     async def background_check(self):
         channel = self.bot.get_channel(738479047813890078)
         current_hour = datetime.now().hour
-        print(f'Current hour: {current_hour}')
-        print(f'Prev hour: {self.bot.last_hour}')
 
         if current_hour != self.bot.last_hour:
             self.bot.last_hour = current_hour
