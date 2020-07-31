@@ -17,7 +17,7 @@ class Pix(commands.Cog):
             buf = io.BytesIO(await resp.read())
 
         await channel.send(
-            content=":baby_chick: CHICK STATUS :baby_chick:",
+            content=":baby_chick: **CHICK STATUS** :baby_chick:",
             file=discord.File(buf, "chick_pix.png"),
         )
 
