@@ -16,7 +16,8 @@ class Pix(commands.Cog):
 
     @commands.command(name="pic", aliases=['p', 'pix'])
     async def _pic(self, ctx):
-        await self.send_pic(ctx.channel)
+        if self.bot.get_channel(738479047813890078) == ctx.channel:
+            await self.send_pic(ctx.channel)
 
     async def send_pic(self, channel):
         async with self.session.get(self.IMG_URL) as resp:
