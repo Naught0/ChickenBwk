@@ -35,6 +35,14 @@ class Pix(commands.Cog):
     def cog_unload(self):
         self.background_check.cancel()
 
+    @commands.command(name='stop', aliases=['disable'])
+    async def _stop(self, ctx):
+        self.background_check.cancel()
+    
+    @commands.command(name='start', aliases=['enable'])
+    async def _start(self, ctx):
+        self.background_check.start()
+
     @tasks.loop(seconds=10.0)
     async def background_check(self):
         channel = self.bot.get_channel(738479047813890078)
