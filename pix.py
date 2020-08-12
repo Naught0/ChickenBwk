@@ -56,12 +56,11 @@ class Pix(commands.Cog):
 
     @tasks.loop(seconds=10.0)
     async def background_check(self):
-        channel = self.bot.get_channel(738479047813890078)
         current_hour = datetime.now().hour
 
         if current_hour != self.bot.last_hour:
             self.bot.last_hour = current_hour
-            await self.send_pic(channel)
+            await self.send_pic(self.channel)
 
 
 def setup(bot):
