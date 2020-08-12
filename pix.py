@@ -39,13 +39,13 @@ class Pix(commands.Cog):
     @commands.command(name="stop", aliases=["disable"])
     async def _stop(self, ctx: commands.Context):
         await ctx.message.add_reaction("👍")
-        
+
         em = discord.Embed(
             title=":octagonal_sign: Chik'n pix stopped",
             description=f"By: {ctx.author.mention}",
             color=discord.Color.blurple()
         )
-        await channel.send(embed=em)
+        await self.channel.send(embed=em)
 
         self.background_check.cancel()
 
