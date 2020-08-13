@@ -33,9 +33,7 @@ class Pix(commands.Cog):
 
         self.bot.num_pix += 1
         with open("stuff.json", "w") as f:
-            j = json.load(f)
-            j["num_pix"] = self.bot.num_pix
-            json.dump(j, f)
+            json.dump({"token": self.bot.token, "num_pix": self.bot.num_pix}, f)
 
     def cog_unload(self):
         self.background_check.cancel()
