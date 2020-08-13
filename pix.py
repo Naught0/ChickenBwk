@@ -64,7 +64,7 @@ class Pix(commands.Cog):
             self.background_check.start()
             await ctx.message.add_reaction("🐣")
 
-    @command.command(name="status", aliases=["stats", "info"])
+    @commands.command(name="status", aliases=["stats", "info"])
     async def _status(self, ctx: commands.Context):
         em = discord.Embed(title=":bar_chart::hatching_chick: Chik'n Stats", color=discord.Color.gold())
         em.add_field(
