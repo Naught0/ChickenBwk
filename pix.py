@@ -80,7 +80,7 @@ class Pix(commands.Cog):
             value=f"```{humanize.naturaldelta(datetime.datetime.now() - self.bot.start_time)}```"
         )
 
-        await ctx.send(embed=em)
+        await self.channel.send(embed=em)
 
     @tasks.loop(seconds=10.0)
     async def background_check(self):
