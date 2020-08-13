@@ -67,7 +67,7 @@ class Pix(commands.Cog):
         em = discord.Embed(title=":bar_chart::hatching_chick: Chik'n Stats", color=discord.Color.gold())
         em.add_field(
             name=":egg::hatched_chick::chicken: Chick Age",
-            value=f"```{humanize.naturaldelta(datetime.date.today() - self.CHICKS_BORN)}```"
+            value=f"```{humanize.precisedelta(datetime.date.today() - self.CHICKS_BORN)}```"
         )
         em.add_field(
             name=":frame_photo: Total Pics",
@@ -75,7 +75,7 @@ class Pix(commands.Cog):
         )
         em.add_field(
             name=":clock1: Bot Uptime",
-            value=f"```{humanize.naturaldelta(datetime.datetime.now() - self.bot.start_time)}```"
+            value=f"```{humanize.precisedelta(datetime.datetime.now() - self.bot.start_time)}```"
         )
 
         await self.channel.send(embed=em)
