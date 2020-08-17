@@ -9,6 +9,7 @@ from discord.ext import commands, tasks
 
 class Pix(commands.Cog):
     IMG_URL = "http://chickens.marc.cx/snapshot"
+    STATUS_URL = "https://chickencamstatus.statuspage.io"
     CHICKS_BORN = datetime.date(2020, 7, 22)
 
     def __init__(self, bot, *args, **kwargs):
@@ -64,6 +65,11 @@ class Pix(commands.Cog):
 
     @commands.command(name="status", aliases=["stats", "info"])
     async def _status(self, ctx: commands.Context):
+        async with self.session.get(self.STATUS_URL) as resp:
+            status_text = await resp.text()
+            status_data = json.loads(text.split('uptimeValues = ')[1].split(';')[0])
+        
+            
         em = discord.Embed(title=":bar_chart::hatching_chick: Chik'n Stats", color=discord.Color.gold())
         em.add_field(
             name=":egg::hatched_chick::chicken: Chick Age",
@@ -76,6 +82,14 @@ class Pix(commands.Cog):
         em.add_field(
             name=":clock1: Bot Uptime",
             value=f"```{humanize.precisedelta(datetime.datetime.now() - self.bot.start_time)}```"
+        )
+        em.add_field(
+            name=":camera: Feed Uptime %",
+            value=f"```{status_data[0]['sixty']:.1f}%```"
+        )
+        em.add_field(
+            name=":globe_with_meridians: Site Uptime %",
+            value=f"```{status_data[1]['sixty']:.1f}%```"
         )
 
         await self.channel.send(embed=em)
