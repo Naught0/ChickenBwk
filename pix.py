@@ -85,11 +85,11 @@ class Pix(commands.Cog):
         )
         em.add_field(
             name=":camera: Feed Uptime % (30|60|90 day)",
-            value=f"```{status_data[0]['thirty']:.1f}|{status_data[0]['sixty']:.1f}|{status_data[0]['ninety']:.1f} %```"
+            value=f"```{status_data[0]['thirty']:.1f}% | {status_data[0]['sixty']:.1f}% | {status_data[0]['ninety']:.1f}%```"
         )
         em.add_field(
             name=":globe_with_meridians: Site Uptime % (30|60|90 day)",
-            value=f"```{status_data[1]['thirty']:.1f}|{status_data[1]['sixty']:.1f}|{status_data[1]['ninety']:.1f} %```"
+            value=f"```{status_data[1]['thirty']:.1f}% | {status_data[1]['sixty']:.1f}% | {status_data[1]['ninety']:.1f}%```"
         )
 
         await self.channel.send(embed=em)
