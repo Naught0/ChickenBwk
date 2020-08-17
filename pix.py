@@ -67,7 +67,7 @@ class Pix(commands.Cog):
     async def _status(self, ctx: commands.Context):
         async with self.session.get(self.STATUS_URL) as resp:
             status_text = await resp.text()
-            status_data = json.loads(text.split('uptimeValues = ')[1].split(';')[0])
+            status_data = json.loads(status_text.split('uptimeValues = ')[1].split(';')[0])
         
             
         em = discord.Embed(title=":bar_chart::hatching_chick: Chik'n Stats", color=discord.Color.gold())
