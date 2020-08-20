@@ -69,11 +69,13 @@ class Pix(commands.Cog):
             status_text = await resp.text()
             status_data = json.loads(status_text.split('uptimeValues = ')[1].split(';')[0])
         
-            
+        _delta = datetime.date.today() - self.CHICKS_BORN
+        _weeks, _days = divmod(_delta.days, 7)
+
         em = discord.Embed(title=":bar_chart::hatching_chick: Chik'n Stats", color=discord.Color.gold())
         em.add_field(
             name=":egg::hatched_chick::chicken: Chick Age",
-            value=f"```{humanize.precisedelta(datetime.date.today() - self.CHICKS_BORN)}```"
+            value=f"```{_weeks} weeks {_days} day(s)```"
         )
         em.add_field(
             name=":frame_photo: Total Pics",
