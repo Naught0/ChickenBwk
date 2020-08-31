@@ -19,6 +19,7 @@ class Pix(commands.Cog):
         self.channel = bot.get_channel(738479047813890078)
 
     @commands.command(name="pic", aliases=["p", "pix"])
+    @commands.cooldown(1, 10.0, commands.BucketType.guild)
     async def _pic(self, ctx):
         if self.channel == ctx.channel:
             await self.send_pic(ctx.channel)
