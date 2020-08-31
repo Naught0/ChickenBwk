@@ -8,7 +8,7 @@ from discord.ext import commands, tasks
 
 
 class Pix(commands.Cog):
-    IMG_URL = "http://chickens.marc.cx/snapshot"
+    IMG_URL = "http://chickens.marc.cx/snapshot2"
     STATUS_URL = "https://chickencamstatus.statuspage.io"
     CHICKS_BORN = datetime.date(2020, 7, 22)
 
