@@ -3,6 +3,7 @@ import io
 import json
 import humanize
 import datetime
+import time
 
 from discord.ext import commands, tasks
 
@@ -27,7 +28,7 @@ class Pix(commands.Cog):
             return
 
         em = discord.Embed()
-        em.set_image(url=self.GIF_URL)
+        em.set_image(url=f"{self.GIF_URL}?{int(time.time())}")
 
         await ctx.send(embed=em)
 
