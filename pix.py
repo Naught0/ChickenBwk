@@ -11,12 +11,25 @@ class Pix(commands.Cog):
     IMG_URL = "http://chickens.marc.cx/snapshot2"
     STATUS_URL = "https://coopcam.statuspage.io/"
     CHICKS_BORN = datetime.date(2020, 7, 22)
+    GIF_URL = "http://chickens.marc.cx/snapshot.gif"
 
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
         self.session = self.bot.session
         self.background_check.start()
         self.channel = bot.get_channel(738479047813890078)
+
+    @command.command(name="gif", aliases="clip")
+    @commands.cooldown(1, 30.0, commands.BucketType.user)
+    async def _gif(self, ctx: commands.Context):
+        """Get a gif of the last 30 seconds of coop activity"""
+        if self.channel != ctx.channel:
+            return
+
+        em = discord.Embed()
+        em.set_image(url=self.GIF_URL)
+
+        await ctx.send(embed=em)
 
     @commands.command(name="pic", aliases=["p", "pix"])
     @commands.cooldown(1, 10.0, commands.BucketType.guild)
