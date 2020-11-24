@@ -35,7 +35,7 @@ class Pix(commands.Cog):
             content=f":baby_chick: **CHICKEN CLIP** :baby_chick:",
             file=discord.File(
                 buf,
-                f"chick_clip{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f')}.gif",
+                f"chick_clip{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f')}.webm",
             ),
         )
 
