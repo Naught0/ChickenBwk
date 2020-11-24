@@ -28,16 +28,8 @@ class Pix(commands.Cog):
             return
 
         image = f"{self.GIF_URL}?{int(time.time())}"
-        async with self.session.get(image) as resp:
-            buf = io.BytesIO(await resp.read())
 
-        await self.channel.send(
-            content=f":baby_chick: **CHICKEN CLIP** :baby_chick: \n{image}",
-            file=discord.File(
-                buf,
-                f"chick_clip{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f')}.gif",
-            ),
-        )
+        await self.channel.send(f":baby_chick: **CHICKEN CLIP** :baby_chick: \n{image}")
 
     @commands.command(name="pic", aliases=["p", "pix"])
     @commands.cooldown(1, 10.0, commands.BucketType.guild)
