@@ -27,10 +27,9 @@ class Pix(commands.Cog):
         if self.channel != ctx.channel:
             return
 
-        em = discord.Embed()
-        em.set_image(url=f"{self.GIF_URL}?{int(time.time())}")
+        image = f"{self.GIF_URL}?{int(time.time())}"
 
-        await ctx.send(embed=em)
+        await self.channel.send(f":baby_chick: **CHICKEN CLIP** :baby_chick: \n{image}")
 
     @commands.command(name="pic", aliases=["p", "pix"])
     @commands.cooldown(1, 10.0, commands.BucketType.guild)
