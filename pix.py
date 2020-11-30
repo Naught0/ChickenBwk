@@ -21,7 +21,7 @@ class Pix(commands.Cog):
         self.channel = bot.get_channel(738479047813890078)
 
     @commands.command(name="gif", aliases=["clip"])
-    @commands.cooldown(1, 30.0, commands.BucketType.user)
+    @commands.cooldown(1, 5.0, commands.BucketType.user)
     async def _gif(self, ctx: commands.Context):
         """Get a gif of the last 30 seconds of coop activity"""
         if self.channel != ctx.channel:
