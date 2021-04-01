@@ -120,7 +120,7 @@ class Pix(commands.Cog):
         )
         em.add_field(
             name=":egg::hatched_chick::baby_chick: Chick Age",
-            value=f"```{brood_weeks} weeks {brood_days} day(s)"
+            value=f"```{brood_weeks} weeks {brood_days} day(s)```"
         )
         em.add_field(name=":frame_photo: Total Pics", value=f"```{self.bot.num_pix}```")
         em.add_field(
