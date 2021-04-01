@@ -2,7 +2,6 @@ import aiohttp
 
 import json
 
-
 from datetime import datetime
 from discord.ext import commands
 
@@ -16,7 +15,8 @@ class ChickenBwk(commands.Bot):
 
         self.token = file["token"]
         self.num_pix = file["num_pix"]
-        self.startup_ext = ['admin', 'pix']
+        self.num_brood_pix = file["num_brood_pix"] if "num_brood_pix" in file else 0
+        self.startup_ext = ["admin", "pix"]
 
         super().__init__(
             command_prefix="!",
