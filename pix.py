@@ -122,7 +122,8 @@ class Pix(commands.Cog):
             name=":egg::hatched_chick::baby_chick: Chick Age",
             value=f"```{brood_weeks} weeks {brood_days} day(s)```"
         )
-        em.add_field(name=":frame_photo: Total Pics", value=f"```{self.bot.num_pix}```")
+        em.add_field(name=":frame_photo::chicken: Total Chicken Pix", value=f"```{self.bot.num_pix}```")
+        em.add_field(name=":frame_photo::baby_chick: Total Chick Pix", value=f"```{self.num_brood_pix}```")
         em.add_field(
             name=":clock1: Bot Uptime",
             value=f"```{humanize.precisedelta(datetime.datetime.now() - self.bot.start_time)}```",
