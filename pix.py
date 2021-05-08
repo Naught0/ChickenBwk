@@ -10,7 +10,6 @@ from discord.ext import commands, tasks
 
 class Pix(commands.Cog):
     IMG_URL = "http://chickens.marc.cx/snapshot2"
-    BROOD_URL = "http://chickens.marc.cx/broodercam/snapshot"
     BROOD_BORN = datetime.date(2021, 3, 29)
     CHICKS_BORN = datetime.date(2020, 7, 22)
     GIF_URL = "http://chickens.marc.cx/snapshot.webm"
@@ -51,23 +50,12 @@ class Pix(commands.Cog):
         async with self.session.get(self.IMG_URL) as resp:
             buf = io.BytesIO(await resp.read())
 
-        async with self.session.get(self.BROOD_URL) as resp:
-            brood_buf = io.BytesIO(await resp.read())
-
         await channel.send(
             content=":chicken: **CHICKEN STATUS** :chicken:",
             file=discord.File(
                 buf,
                 f"chick_pix{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f')}.png",
             ),
-        )
-
-        await channel.send(
-            content=":baby_chick: **CHICK STATUS** :baby_chick:",
-            file=discord.File(
-                brood_buf,
-                f"brood_pix{datetime.datetime.now(tz=datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f')}.png"
-            )
         )
 
         self.bot.num_pix += 1
