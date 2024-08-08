@@ -4,16 +4,13 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
+package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.10"
 "discord.py" = "^1.3.4"
 aiohttp = "^3.6.2"
 humanize = {git = "https://github.com/jmoiron/humanize.git"}
-
-[tool.poetry.dev-dependencies]
-flake8 = "^3.8.3"
-black = {version = "^19.10b0", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry>=0.12"]
