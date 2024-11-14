@@ -12,3 +12,9 @@ dependencies = [
 
 [tool.uv.sources]
 humanize = { git = "https://github.com/jmoiron/humanize.git" }
+
+[dependency-groups]
+dev = [
+    "black>=24.10.0",
+    "isort>=5.13.2",
+]
