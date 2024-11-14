@@ -1,8 +1,8 @@
-import aiohttp
-
 import json
-
 from datetime import datetime
+
+import aiohttp
+import discord
 from discord.ext import commands
 
 
@@ -43,5 +43,5 @@ class ChickenBwk(commands.Bot):
 
 
 if __name__ == "__main__":
-    bot = ChickenBwk()
+    bot = ChickenBwk(intents=discord.Intents.all())
     bot.run()
