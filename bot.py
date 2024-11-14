@@ -37,7 +37,8 @@ class ChickenBwk(commands.Bot):
             self.start_time = datetime.now()
             self.last_hour = self.start_time.hour
 
-        [self.load_extension(x) for x in self.startup_ext]
+        for x in self.startup_ext:
+            await self.load_extension(x)
 
         print(f"Client logged in at {self.start_time}")
         print("".join(["-" for x in range(80)]))
