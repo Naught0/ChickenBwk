@@ -18,11 +18,15 @@ class ChickenBwk(commands.Bot):
         self.num_brood_pix = file["num_brood_pix"] if "num_brood_pix" in file else 0
         self.startup_ext = ["admin", "pix"]
 
+        intents = discord.Intents.default()
+        intents.message_content = True
+
         super().__init__(
             command_prefix="!",
             description=self.description,
             pm_help=None,
             case_insensitive=True,
+            intents=intents,
             *args,
             **kwargs,
         )
@@ -45,5 +49,5 @@ class ChickenBwk(commands.Bot):
 
 
 if __name__ == "__main__":
-    bot = ChickenBwk(intents=discord.Intents.default())
+    bot = ChickenBwk()
     bot.run()
