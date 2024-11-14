@@ -44,5 +44,5 @@ class ChickenBwk(commands.Bot):
 
 
 if __name__ == "__main__":
-    bot = ChickenBwk(intents=discord.Intents.all())
+    bot = ChickenBwk(intents=discord.Intents.default())
     bot.run()
