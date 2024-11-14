@@ -1,10 +1,10 @@
-import discord
+import datetime
 import io
 import json
-import humanize
-import datetime
 import time
 
+import discord
+import humanize
 from discord.ext import commands, tasks
 
 
@@ -19,7 +19,7 @@ class Pix(commands.Cog):
         self.session = self.bot.session
         self.background_check.start()
         self.channel = bot.get_channel(738479047813890078)
-        self.num_brood_pix = bot.num_brood_pix if hasattr(bot, 'num_brood_pix') else 0
+        self.num_brood_pix = bot.num_brood_pix if hasattr(bot, "num_brood_pix") else 0
 
     @commands.command(name="gif", aliases=["clip"])
     @commands.cooldown(1, 5.0, commands.BucketType.user)
@@ -62,7 +62,14 @@ class Pix(commands.Cog):
         self.num_brood_pix += 1
         self.bot.num_brood_pix = self.num_brood_pix
         with open("stuff.json", "w") as f:
-            json.dump({"token": self.bot.token, "num_pix": self.bot.num_pix, "num_brood_pix": self.bot.num_brood_pix}, f)
+            json.dump(
+                {
+                    "token": self.bot.token,
+                    "num_pix": self.bot.num_pix,
+                    "num_brood_pix": self.bot.num_brood_pix,
+                },
+                f,
+            )
 
     def cog_unload(self):
         self.background_check.cancel()
@@ -108,10 +115,16 @@ class Pix(commands.Cog):
         )
         em.add_field(
             name=":egg::hatched_chick::baby_chick: Chick Age",
-            value=f"```{brood_weeks} weeks {brood_days} day(s)```"
+            value=f"```{brood_weeks} weeks {brood_days} day(s)```",
         )
-        em.add_field(name=":frame_photo::chicken: Total Chicken Pix", value=f"```{self.bot.num_pix}```")
-        em.add_field(name=":frame_photo::baby_chick: Total Chick Pix", value=f"```{self.num_brood_pix}```")
+        em.add_field(
+            name=":frame_photo::chicken: Total Chicken Pix",
+            value=f"```{self.bot.num_pix}```",
+        )
+        em.add_field(
+            name=":frame_photo::baby_chick: Total Chick Pix",
+            value=f"```{self.num_brood_pix}```",
+        )
         em.add_field(
             name=":clock1: Bot Uptime",
             value=f"```{humanize.precisedelta(datetime.datetime.now() - self.bot.start_time)}```",
@@ -135,5 +148,5 @@ class Pix(commands.Cog):
             await self.send_pic(self.channel)
 
 
-def setup(bot):
-    bot.add_cog(Pix(bot))
+async def setup(bot):
+    await bot.add_cog(Pix(bot))
