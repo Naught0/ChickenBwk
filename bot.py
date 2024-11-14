@@ -26,12 +26,13 @@ class ChickenBwk(commands.Bot):
             *args,
             **kwargs,
         )
-        self.session = aiohttp.ClientSession(loop=self.loop)
 
     def run(self):
         super().run(self.token)
 
     async def on_ready(self):
+        self.session = aiohttp.ClientSession()
+
         if not hasattr(self, "start_time"):
             self.start_time = datetime.now()
             self.last_hour = self.start_time.hour
